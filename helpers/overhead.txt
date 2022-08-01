@@ -1,0 +1,130 @@
+/ocean/projects/ccr180031p/lane99/matrices/csr3/bmwcra_1.mtx.csr.rcm.csr3
+Matrix consumes 85759840 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/brack2.mtx.csr.rcm.csr3
+Matrix consumes 6143216 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/cont-300.mtx.csr.rcm.csr3
+Matrix consumes 8737224 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/delaunay_n20.mtx.csr.rcm.csr3
+Matrix consumes 55179512 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/ecology1.mtx.csr.rcm.csr3
+Matrix consumes 44609904 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/Emilia_923.mtx.csr.rcm.csr3
+Matrix consumes 326877632 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/fl2010.mtx.csr.rcm.csr3
+Matrix consumes 20998840 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/G3_circuit.mtx.csr.rcm.csr3
+Matrix consumes 68603512 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/hugebubbles-00000.mtx.csr.rcm.csr3
+Matrix consumes 523036136 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/hugetrace-00000.mtx.csr.rcm.csr3
+Matrix consumes 130985420 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/hugetric-00000.mtx.csr.rcm.csr3
+Matrix consumes 166291572 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/packing-500x100x100-b050.mtx.csr.rcm.csr3
+Matrix consumes 288852816 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/roadNet-TX.mtx.csr.rcm.csr3
+Matrix consumes 37056592 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/thermal2.mtx.csr.rcm.csr3
+Matrix consumes 74451172 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/wave.mtx.csr.rcm.csr3
+Matrix consumes 17644224 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/csr3/wi2010.mtx.csr.rcm.csr3
+Matrix consumes 10839572 bytes when loaded into memory.
+
+
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/bmwcra_1.mtx.rcm.csr
+Matrix consumes 85727896 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/brack2.mtx.rcm.csr
+Matrix consumes 6115468 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/cont-300.mtx.rcm.csr
+Matrix consumes 8629140 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/delaunay_n20.mtx.rcm.csr
+Matrix consumes 54525280 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/ecology1.mtx.rcm.csr
+Matrix consumes 43968000 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/Emilia_923.mtx.rcm.csr
+Matrix consumes 326680848 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/fl2010.mtx.rcm.csr
+Matrix consumes 20708276 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/G3_circuit.mtx.rcm.csr
+Matrix consumes 67628520 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/hugebubbles-00000.mtx.rcm.csr
+Matrix consumes 512793868 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/hugetrace-00000.mtx.rcm.csr
+Matrix consumes 128420064 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/hugetric-00000.mtx.rcm.csr
+Matrix consumes 163034584 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/packing-500x100x100-b050.mtx.rcm.csr
+Matrix consumes 288395296 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/roadNet-TX.mtx.rcm.csr
+Matrix consumes 36320092 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/thermal2.mtx.rcm.csr
+Matrix consumes 73554684 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/wave.mtx.rcm.csr
+Matrix consumes 17574564 bytes when loaded into memory.
+
+
+/ocean/projects/ccr180031p/lane99/matrices/rcm/wi2010.mtx.rcm.csr
+Matrix consumes 10687616 bytes when loaded into memory.
+
+

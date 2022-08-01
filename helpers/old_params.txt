@@ -1,0 +1,122 @@
+/home/uahpal001/matrices/norm/bmwcra_1.mtx.csr
+Optimal calculated super-row size: 8
+Optimal calculated super-super-row size: 7
+Vectorization on innermost loop: yes
+Optimal block dimensions: 32 x 8 x 2
+
+
+/home/uahpal001/matrices/norm/brack2.mtx.csr
+Optimal calculated super-row size: 7
+Optimal calculated super-super-row size: 8
+Vectorization on innermost loop: yes
+Optimal block dimensions: 4 x 8 x 12
+
+
+/home/uahpal001/matrices/norm/delaunay_n20.mtx.csr
+Optimal calculated super-row size: 6
+Optimal calculated super-super-row size: 5
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/ecology1.mtx.csr
+Optimal calculated super-row size: 7
+Optimal calculated super-super-row size: 6
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/Emilia_923.mtx.csr
+Optimal calculated super-row size: 7
+Optimal calculated super-super-row size: 7
+Vectorization on innermost loop: yes
+Optimal block dimensions: 16 x 8 x 4
+
+
+/home/uahpal001/matrices/norm/G3_circuit.mtx.csr
+Optimal calculated super-row size: 7
+Optimal calculated super-super-row size: 6
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/hugebubbles-00000.mtx.csr
+Optimal calculated super-row size: 9
+Optimal calculated super-super-row size: 9
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/hugetrace-00000.mtx.csr
+Optimal calculated super-row size: 9
+Optimal calculated super-super-row size: 9
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/hugetric-00000.mtx.csr
+Optimal calculated super-row size: 9
+Optimal calculated super-super-row size: 9
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/normnew
+
+
+/home/uahpal001/matrices/norm/packing-500x100x100-b050.mtx.csr
+Optimal calculated super-row size: 8
+Optimal calculated super-super-row size: 8
+Vectorization on innermost loop: yes
+Optimal block dimensions: 8 x 8 x 8
+
+
+/home/uahpal001/matrices/norm/thermal2.mtx.csr
+Optimal calculated super-row size: 6
+Optimal calculated super-super-row size: 5
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/wave.mtx.csr
+Optimal calculated super-row size: 7
+Optimal calculated super-super-row size: 8
+Vectorization on innermost loop: yes
+Optimal block dimensions: 4 x 8 x 12
+
+
+/home/uahpal001/matrices/norm/normnew/cont-300.mtx.csr
+Optimal calculated super-row size: 6
+Optimal calculated super-super-row size: 5
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/normnew/fl2010.mtx.csr
+Optimal calculated super-row size: 7
+Optimal calculated super-super-row size: 6
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/normnew/lp1.mtx.csr
+Optimal calculated super-row size: 9
+Optimal calculated super-super-row size: 9
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/normnew/roadNet-TX.mtx.csr
+Optimal calculated super-row size: 9
+Optimal calculated super-super-row size: 10
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
+/home/uahpal001/matrices/norm/normnew/wi2010.mtx.csr
+Optimal calculated super-row size: 7
+Optimal calculated super-super-row size: 6
+Vectorization on innermost loop: no
+Optimal block dimensions: 8 x 12
+
+
