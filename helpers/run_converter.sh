@@ -1,4 +1,4 @@
 #!/bin/bash
 
-module load octave
-octave converter.m
+module load octave/4.4.0
+octave converter_mm.m
