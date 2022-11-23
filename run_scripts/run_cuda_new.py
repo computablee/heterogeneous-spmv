@@ -13,7 +13,7 @@ threads = 16
 num_runs = 20;
 #mat_loc = "/scratch-local/lane-matrices/norm";
 mat_loc = sys.argv[1] + "/matrices/rcm";
-spmv_path = os.path.expanduser('~') + "/gpu-spmv-csr";
+spmv_path = os.path.expanduser('~') + "/heterogeneous-spmv";
 record_file = os.path.expanduser('~') + "/csrk-rcm.csv";
 
 

@@ -13,4 +13,4 @@ module load boost/1.68.0 nvhpc/2020_20.5 cuda/11.4.0
 #mkdir /scratch-local/lane-matrices
 #cp -r ~/matrices /scratch-local/lane-matrices
 
-python3 run_cuda_new.py /scratch-local/lane-matrices
+python3 run_cuda_new.py ~

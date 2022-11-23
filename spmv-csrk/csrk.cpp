@@ -228,13 +228,15 @@ void CSRk_Graph::SpMV(float *&y) {
       const unsigned int start_index = mapCoarseToFinerRows[k - 1][i_sup_row];
       const unsigned int end_index = mapCoarseToFinerRows[k - 1][i_sup_row + 1];
 
+      printf("start: %d, end: %d\n", start_index, end_index);
+
       float temp_y;
       uint64_t nnz_index;
 
       for (uint64_t rowIndex = start_index; rowIndex < end_index; rowIndex++) {
         temp_y = 0;
 #pragma vector always
-#pragma vector aligned vectorlength(16)
+#pragma vector vectorlength(16)
         for (nnz_index = r_vec[rowIndex]; nnz_index < r_vec[rowIndex + 1];
              nnz_index++)
           temp_y += val[nnz_index] * x_test[c_vec[nnz_index]];

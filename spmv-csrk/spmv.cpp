@@ -41,7 +41,7 @@ void my_read_csr(char *fname, int *m, int *n, int *nnz,
   // printf("%c \n", tt);
   fscanf(fp, "%d %d  %d \n", m, n, nnz);
 
-  // printf("size %d %d %d \n", *m, *n, *nnz);
+  printf("size %d %d %d \n", *m, *n, *nnz);
   // malloc memory for vectors
   *row_start = (unsigned int *)hbw_malloc((*m + 1) * sizeof(unsigned int));
   *col_idx = (unsigned int *)hbw_malloc(*nnz * sizeof(unsigned int));
@@ -57,14 +57,14 @@ void my_read_csr(char *fname, int *m, int *n, int *nnz,
   for (i = 0; i < *m + 1; ++i) {
     int temp;
     fscanf(fp, "%u ", &temp);
-    (*row_start)[i] = temp;
+    (*row_start)[i] = temp - 1;
   }
 
   // 2 col_idx
   for (i = 0; i < *nnz; ++i) {
     int temp;
     fscanf(fp, "%u ", &temp);
-    (*col_idx)[i] = temp;
+    (*col_idx)[i] = temp - 1;
   }
 
   // 3 vals
@@ -150,24 +150,27 @@ int main(int argc, char **argv) {
 
   // Initializes vector x
   A_mat.setX(x);
-
+  // return 0;
   // Output vector
   float *y; // = (float *) hbw_malloc(nRows*sizeof(float));
   posix_memalign((void **)&y, 64, nRows * sizeof(float));
   // Output vector for serial CSR test
   float *y_csrser = (float *)hbw_malloc(nRows * sizeof(float));
+  //posix_memalign((void **)&y_csrser, 64, nRows * sizeof(float));
 
   int N = atoi(argv[2]);
   float min = 9999.0;
   float max = 0.0;
   float avg = 0.0;
   cout << "Vectors set, running test." << endl;
-  // Computes y
+  // Computes 5
 
   // do 5 warmup runs
   for (int i = 0; i < 5; i++) {
     A_mat.SpMV(y);
   }
+
+  // return 0;
 
   for (int i = 0; i < N; i++) {
     auto tic = std::chrono::steady_clock::now();
@@ -192,6 +195,10 @@ int main(int argc, char **argv) {
   unsigned int *permutation = A_mat.getPermutation();
 
   int num_wrong = 0;
+  // printf("%d\n", permutation[0]);
+  for (int i = 0; i < nRows; ++i)
+    printf("%d ", permutation[i]);
+  printf("\n");
   for (int i = 0; i < nRows; ++i) {
     float temp = y[i] - y_csrser[permutation[i]];
     if (temp > .01 || temp < -.01) {
