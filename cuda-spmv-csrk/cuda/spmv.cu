@@ -71,14 +71,14 @@ void my_read_csr(char *fname, int *m, int *n, int *nnz,
   for (i = 0; i < *m + 1; ++i) {
     int temp;
     fscanf(fp, "%u ", &temp);
-    (*row_start)[i] = temp;
+    (*row_start)[i] = temp - 1;
   }
 
   // 2 col_idx
   for (i = 0; i < *nnz; ++i) {
     int temp;
     fscanf(fp, "%u ", &temp);
-    (*col_idx)[i] = temp;
+    (*col_idx)[i] = temp - 1;
   }
 
   // 3 vals
@@ -140,6 +140,26 @@ int main(int argc, char **argv) {
   A_mat.putInCSRkFormat();
   cout << "In CSR-k format." << endl;
 
+  double d = (float)NNZ / (float)nRows;
+  bool vec = false;
+  int veclevel = 4;
+
+  if (d > 8.0 && d <= 16.0) {
+    vec = true;
+  } else if (d > 16.0 && d <= 32.0) {
+    vec = true;
+    veclevel = 8;
+    blockDimy = 8;
+  } else if (d > 32 && d <= 64.0) {
+    vec = true;
+    veclevel = 16;
+    blockDimy = 4;
+  } else if (d > 64) {
+    vec = true;
+    veclevel = 32;
+    blockDimy = 2;
+  }
+
   float *x = new float[nRows];
 #pragma omp for schedule(static)
   for (int i = 0; i < nRows; i++)
@@ -164,11 +184,18 @@ int main(int argc, char **argv) {
 
   for (int i = 0; i < N; i++) {
     auto tic = std::chrono::steady_clock::now();
-    cuSpMV_3<<<A_mat.getNumCoarsestRows(), dim3(8, 12)>>>(
-        numCoarsestRows_gpu, mapCoarseToFinerRows_gpu_outer,
-        mapCoarseToFinerRows_gpu_inner, r_vec_gpu, c_vec_gpu, val_gpu,
-        x_test_gpu, y_gpu);
-    // printf("%s\n", cudaGetErrorString(cudaGetLastError()));
+    if (vec)
+      cuSpMV_3_vec<<<A_mat.getNumCoarsestRows(),
+                     dim3(veclevel, blockDimx, blockDimy)>>>(
+          numCoarsestRows_gpu, mapCoarseToFinerRows_gpu_outer,
+          mapCoarseToFinerRows_gpu_inner, r_vec_gpu, c_vec_gpu, val_gpu,
+          x_test_gpu, y_gpu);
+    else
+      cuSpMV_3<<<A_mat.getNumCoarsestRows(), dim3(blockDimx, blockDimy)>>>(
+          numCoarsestRows_gpu, mapCoarseToFinerRows_gpu_outer,
+          mapCoarseToFinerRows_gpu_inner, r_vec_gpu, c_vec_gpu, val_gpu,
+          x_test_gpu, y_gpu);
+
     cudaDeviceSynchronize();
     std::chrono::duration<float> toc = std::chrono::steady_clock::now() - tic;
     float tock = toc.count();
