@@ -127,9 +127,9 @@ int main(int argc, char **argv) {
 
   kernelType = "SpMV";
   corseningType = "HAND";
-  int k = 3;
+  int k = 2;
   supRowSizes[0] = atoi(argv[3]);
-  supRowSizes[1] = atoi(argv[4]);
+  //supRowSizes[1] = atoi(argv[4]);
 
   cout << "Read in matrix and config file." << endl;
   // Initialize a matrix object
@@ -140,11 +140,12 @@ int main(int argc, char **argv) {
   A_mat.putInCSRkFormat();
   cout << "In CSR-k format." << endl;
 
-  double d = (float)NNZ / (float)nRows;
+  double d = (double)NNZ / (double)nRows;
+  int blockDimx = 8, blockDimy = 12;
   bool vec = false;
   int veclevel = 4;
 
-  if (d > 8.0 && d <= 16.0) {
+  /*if (d > 8.0 && d <= 16.0) {
     vec = true;
   } else if (d > 16.0 && d <= 32.0) {
     vec = true;
@@ -158,7 +159,7 @@ int main(int argc, char **argv) {
     vec = true;
     veclevel = 32;
     blockDimy = 2;
-  }
+  }*/
 
   float *x = new float[nRows];
 #pragma omp for schedule(static)
@@ -191,9 +192,9 @@ int main(int argc, char **argv) {
           mapCoarseToFinerRows_gpu_inner, r_vec_gpu, c_vec_gpu, val_gpu,
           x_test_gpu, y_gpu);
     else
-      cuSpMV_3<<<A_mat.getNumCoarsestRows(), dim3(blockDimx, blockDimy)>>>(
-          numCoarsestRows_gpu, mapCoarseToFinerRows_gpu_outer,
-          mapCoarseToFinerRows_gpu_inner, r_vec_gpu, c_vec_gpu, val_gpu,
+      cuSpMV_2<<<A_mat.getNumCoarsestRows(), dim3(blockDimx, blockDimy)>>>(
+          numCoarsestRows_gpu, //mapCoarseToFinerRows_gpu_outer,
+          mapCoarseToFinerRows_gpu_outer, r_vec_gpu, c_vec_gpu, val_gpu,
           x_test_gpu, y_gpu);
 
     cudaDeviceSynchronize();
@@ -222,8 +223,8 @@ int main(int argc, char **argv) {
     // float temp = y[i] - y_csrser[permutation[i]];
     float temp = y[i] - y_csrser[i];
     if (temp > .01 || temp < -.01) {
-      printf("wrong loc: %d \n", i);
-      printf("y: %f y_csrser: %f \n", y[i], y_csrser[i]);
+      //printf("wrong loc: %d \n", i);
+      //printf("y: %f y_csrser: %f \n", y[i], y_csrser[i]);
       // printf("y: %f y_csrser: %f \n", y[i], y_csrser[permutation[i]]);
       num_wrong++;
     }

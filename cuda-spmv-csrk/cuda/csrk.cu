@@ -347,22 +347,42 @@ __global__ void cuSpMV_2(unsigned int *__restrict__ numCoarsestRows_gpu,
       int nnz_index_end = (int)r_vec_gpu[rowIndex + 1];
       float temp = 0;
 
-      int nnz_index_end_m3 = (int)r_vec_gpu[rowIndex + 1] - 3;
+      int nnz = nnz_index_end - nnz_index_start;
 
-      for (; nnz_index_start < nnz_index_end_m3; nnz_index_start += 4) {
-        temp = __fmaf_rn(val_gpu[nnz_index_start],
-                         x_test_gpu[c_vec_gpu[nnz_index_start]], temp);
-        temp = __fmaf_rn(val_gpu[nnz_index_start + 1],
-                         x_test_gpu[c_vec_gpu[nnz_index_start + 1]], temp);
-        temp = __fmaf_rn(val_gpu[nnz_index_start + 2],
-                         x_test_gpu[c_vec_gpu[nnz_index_start + 2]], temp);
-        temp = __fmaf_rn(val_gpu[nnz_index_start + 3],
-                         x_test_gpu[c_vec_gpu[nnz_index_start + 3]], temp);
+      while (nnz > 7) {
+        temp +=
+            val_gpu[nnz_index_start] * x_test_gpu[c_vec_gpu[nnz_index_start]];
+        temp += val_gpu[nnz_index_start + 1] *
+                x_test_gpu[c_vec_gpu[nnz_index_start + 1]];
+        temp += val_gpu[nnz_index_start + 2] *
+                x_test_gpu[c_vec_gpu[nnz_index_start + 2]];
+        temp += val_gpu[nnz_index_start + 3] *
+                x_test_gpu[c_vec_gpu[nnz_index_start + 3]];
+        nnz -= 4;
+        nnz_index_start += 4;
       }
 
-      for (; nnz_index_start < nnz_index_end; nnz_index_start++) {
-        temp = __fmaf_rn(val_gpu[nnz_index_start],
-                         x_test_gpu[c_vec_gpu[nnz_index_start]], temp);
+      if (nnz & 0b100) {
+        temp +=
+            val_gpu[nnz_index_start] * x_test_gpu[c_vec_gpu[nnz_index_start]];
+        temp += val_gpu[nnz_index_start + 1] *
+                x_test_gpu[c_vec_gpu[nnz_index_start + 1]];
+        temp += val_gpu[nnz_index_start + 2] *
+                x_test_gpu[c_vec_gpu[nnz_index_start + 2]];
+        temp += val_gpu[nnz_index_start + 3] *
+                x_test_gpu[c_vec_gpu[nnz_index_start + 3]];
+        nnz_index_start += 4;
+      }
+      if (nnz & 0b010) {
+        temp +=
+            val_gpu[nnz_index_start] * x_test_gpu[c_vec_gpu[nnz_index_start]];
+        temp += val_gpu[nnz_index_start + 1] *
+                x_test_gpu[c_vec_gpu[nnz_index_start + 1]];
+        nnz_index_start += 2;
+      }
+      if (nnz & 0b001) {
+        temp +=
+            val_gpu[nnz_index_start] * x_test_gpu[c_vec_gpu[nnz_index_start]];
       }
 
       y_gpu[rowIndex] = temp;

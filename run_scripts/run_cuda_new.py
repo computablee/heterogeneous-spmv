@@ -12,9 +12,10 @@ import sys
 threads = 16
 num_runs = 20;
 #mat_loc = "/scratch-local/lane-matrices/norm";
-mat_loc = sys.argv[1] + "/matrices/rcm";
+#mat_loc = sys.argv[1] + "/matrices/new_norm";
+mat_loc = "/scratch-local/lane-matrices/new_norm"
 spmv_path = os.path.expanduser('~') + "/heterogeneous-spmv";
-record_file = os.path.expanduser('~') + "/csrk-rcm.csv";
+record_file = os.path.expanduser('~') + "/csrk.csv";
 
 
 #spmv_default_omp = ["acc-spmv-csr", "acc-spmv-csrk"];
@@ -87,7 +88,7 @@ def default_run():
                                                   shell=True,
                                                   timeout=600);
                             else:
-                                trun = subprocess.run(spmv_path + "/" + i + "/spmv-auto-ampere" + " " + mat_long + " " + str(num_runs),
+                                trun = subprocess.run(spmv_path + "/" + i + "/spmv-auto-volta" + " " + mat_long + " " + str(num_runs),
                                                   stdout=subprocess.PIPE,
                                                   shell=True,
                                                   timeout=600);

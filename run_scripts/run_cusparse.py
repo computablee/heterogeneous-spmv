@@ -13,9 +13,9 @@ num_runs = 20;
 #mat_loc = "/scratch-local/lane-matrices/rcm/rcmnew";
 #spmv_path = "/home/uahpal001/gpu-spmv-csr";
 #record_file = "/home/uahpal001/cusparse_csrk.csv";
-mat_loc = os.path.expanduser('~') + "/matrices/rcm";
-spmv_path = os.path.expanduser('~') + "/gpu-spmv-csr";
-record_file = os.path.expanduser('~') + "/cuda-cusparse.csv";
+mat_loc = "/scratch-local/lane-matrices/new_rcm";
+spmv_path = os.path.expanduser('~') + "/heterogeneous-spmv";
+record_file = os.path.expanduser('~') + "/ampere-cusparse.csv";
 
 #spmv_default_omp = ["acc-spmv-csr", "acc-spmv-csrk"];
 #spmv_default_omp = ["acc-spmv-csrk"];

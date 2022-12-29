@@ -36,14 +36,14 @@ void my_read_csr(char *fname, int *m, int *n, int *nnz, int **row_start,
   for (i = 0; i < *m + 1; ++i) {
     int temp;
     fscanf(fp, "%d ", &temp);
-    (*row_start)[i] = temp;
+    (*row_start)[i] = temp - 1;
   }
 
   // 2 col_idx
   for (i = 0; i < *nnz; ++i) {
     int temp;
     fscanf(fp, "%d ", &temp);
-    (*col_idx)[i] = temp;
+    (*col_idx)[i] = temp - 1;
   }
 
   // 3 vals

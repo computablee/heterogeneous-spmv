@@ -10,9 +10,9 @@ import time
 threads = 16
 num_runs = 20;
 #mat_loc = os.path.expanduser("~/matrices/norm");
-mat_loc = "/home/uahpal001/matrices/norm";
-spmv_path = "/home/uahpal001/gpu-spmv-csr";
-record_file = "/home/uahpal001/kokkos_norm.csv";
+mat_loc = "/scratch-local/lane-matrices/new_rcm";
+spmv_path = "/home/uahpal001/heterogeneous-spmv";
+record_file = "/home/uahpal001/kokkos_rcm.csv";
 
 
 #spmv_default_omp = ["acc-spmv-csr", "acc-spmv-csrk"];

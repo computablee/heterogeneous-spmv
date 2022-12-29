@@ -11,20 +11,21 @@ import itertools
 threads = 16
 num_runs = 20;
 #mat_loc = "/scratch-local/lane-matrices/norm";
-mat_loc = "/scratch-local/lane-matrices/norm";
-spmv_path = "/home/uahpal001/gpu-spmv-csr";
-record_file = "/home/uahpal001/volta_tuning.csv";
+mat_loc = "/scratch-local/lane-matrices/new_norm";
+spmv_path = "/home/uahpal001/heterogeneous-spmv";
+record_file = "/home/uahpal001/ampere_tuning_csr2.csv";
 
 
 #spmv_default_omp = ["acc-spmv-csr", "acc-spmv-csrk"];
 #spmv_default_omp = ["acc-spmv-csrk"];
-spmv_default_omp = ["cuda-spmv-csrk"];
+spmv_default_omp = ["cuda-spmv-csrk/cuda"];
 spmv_default_omp_schedule = ["cuda"];
 spmv_default_omp_chunk = [1];
 #spmv_default_omp_module = ["module load pgi"];
 #spmv_default_omp_unmodule = ["module unload pgi"];
-ssrss = [4, 6, 8, 12, 16, 24, 32, 48]
-srss  = [4, 6, 8, 12, 16, 24, 32, 48]
+srss = [16, 24, 32, 48, 64, 96, 128, 192, 256, 384, 512, 768]
+#ssrss = [4, 6, 8, 12, 16, 24, 32, 48]
+#srss  = [4, 6, 8, 12, 16, 24, 32, 48]
 
 def default_run():
     """
@@ -65,11 +66,11 @@ def default_run():
                 for chunk in spmv_default_omp_chunk:
 
                     #iterate over chunk sizes
-                    for ssrs in ssrss:
-                      for srs in srss:
+                    #for ssrs in ssrss:
+                    for srs in srss:
                     
                         #iterate over all cores
-                        print(i + "_" + mat + "_" + sch + "_" + str(ssrs) + "_" + str(srs));
+                        print(i + "_" + mat + "_" + sch + "_" + str(srs)) #+ str(ssrs) + "_" + str(srs));
 
                         fid_rec = open(record_file, "a+");
 
@@ -85,7 +86,7 @@ def default_run():
                         
                         tic = time.clock()
                         try:
-                            trun = subprocess.run(spmv_path + "/" + i + "/spmv" + " " + mat_long + " " + str(num_runs) + " " + str(ssrs) + " " + str(srs),
+                            trun = subprocess.run(spmv_path + "/" + i + "/spmv" + " " + mat_long + " " + str(num_runs) + " " + str(srs), #str(ssrs) + " " + str(srs),
                                                   stdout=subprocess.PIPE,
                                                   shell=True,
                                                   timeout=600);
@@ -122,10 +123,10 @@ def default_run():
                         #print("avg found: ", float(avg_val));
 
                         #write out to the 
-                        fid_rec.write(i + ", " + mat + ", " + sch + ", " + str(chunk) + ", " + str(threads) + ", (" + str(ssrs) + ", " + str(srs) + "), " + min_val + ", " +  max_val + ", " + avg_val + ", \n");
+                        fid_rec.write(i + ", " + mat + ", " + sch + ", " + str(chunk) + ", " + str(threads) + ", (" + str(srs) + "), " + min_val + ", " +  max_val + ", " + avg_val + ", \n");
                         
                         #print(i + ", " + mat + ", " + sch + ", " + str(chunk) + ", " + str(threads) + ", " + min_val + ", " +  max_val + ", " + avg_val + ", \n");
-                        print(i + ", " + mat + ", " + sch  + ", " + str(chunk) + ", " + str(threads) + ", (" + str(ssrs) + ", " + str(srs) + "), " + min_val + ", " +  max_val + ", " + avg_val + ", \n");
+                        print(i + ", " + mat + ", " + sch  + ", " + str(chunk) + ", " + str(threads) + ", (" + str(srs) + "), " + min_val + ", " +  max_val + ", " + avg_val + ", \n");
 
                         fid_rec.close();
         #zrun = os.system(spmv_default_omp_unmodule[ki]);
