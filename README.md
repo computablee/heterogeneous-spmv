@@ -34,6 +34,9 @@ Also provides scripts to show runtime parameters for an input matrix.
 ### cusparse-spmv
 CSR SpMV kernel using Nvidia's cuSPARSE library for comparison testing.
 
+### hipsparse-spmv
+CSR SpMV kernel using hipSPARSE for comparison testing.
+
 ### kokkos-spmv
 CSR SpMV kernel using Sandia's KokkosKernels library for comparison testing.
 
@@ -46,9 +49,6 @@ A set of Python scripts for managing execution and management of the programs in
 ### reformat-csr-to-csr3
 Reformats a .mtx file to a .mtx.rcm.csr3 file for analysis of the banding algorithm.
 Also contains an application for analyzing the stats about an .mtx.rcm.csr3 file.
-
-### ocaml-csr
-I got bored one night and decided to implement SpMV in OCaml to compare its performance to C. Hint: it isn't good.
 
 ## Build Notes
 The OpenACC versions are compiled using the PGI compiler.
@@ -71,15 +71,18 @@ Cuda compilation tools, release 11.4, V11.4.48
 Build cuda_11.4.r11.4/compiler.30033411_0
 ```
 
-The OpenMP versions are compiled with the ICC compiler by Intel.
+The OpenMP versions are compiled with the ICC compiler by Intel when tested on Intel systems.
 This is what I get when I run `icc --version`:
 ```
 icc (ICC) 19.1.1.217 20200306
 Copyright (C) 1985-2020 Intel Corporation.  All rights reserved.
 ```
 
+We compile the OpenMP versions with AOCC when tested on AMD systems.
+Someone remind me someday to post the `clang++ --version` output on Bridges-2.
+
 Building the CSR-k benchmarks require an install of Boost.
 We try to use versions 1.68 or 1.72, as later versions deprecate some headers used.
 
 ## Acknowledgements
-This work was made possible in part by a grant of high performance computing resources and technical support from the Alabama Supercomputer Authority, as well as NSF2044633.
+This work was made possible in part by a grant of high performance computing resources and technical support from the Alabama Supercomputer Authority, Sandia National Laboratories, as well as NSF2044633.
