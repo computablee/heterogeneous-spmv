@@ -87,4 +87,4 @@ Building the CSR-k benchmarks require an install of Boost.
 We try to use versions 1.68 or 1.72, as later versions deprecate some headers used.
 
 ## Acknowledgements
-This work was made possible in part by a grant of high performance computing resources and technical support from the Alabama Supercomputer Authority, Sandia National Laboratories, as well as NSF2044633.
+This work was made possible in part by support from the Alabama Supercomputer Authority, Sandia National Laboratories, and NSF2044633. This work used the Extreme Science and Engineering Discovery Environment (XSEDE), which is supported by National Science Foundation grant number ACI-1548562.
