@@ -7,6 +7,8 @@ Though less well-defined on CPU, in both cases this can result in more effective
 To complete this research, I have collected a large amount of SpMV kernels.
 There are kernels using CSR and CSR-k that are written for CPU (using OpenMP and MKL) and GPU (using OpenACC, CUDA, KokkosKernels, and cuSPARSE).
 
+UPDATE: This research is now published in [Parallel Computing](https://www.sciencedirect.com/science/article/pii/S0167819123000030) and [ProQuest](https://www.proquest.com/docview/2741089208/933BA884F54D49DCPQ).
+
 ## Directory Format
 ### acc-spmv-csr
 Traditional SpMV kernel using OpenACC parallelization.
